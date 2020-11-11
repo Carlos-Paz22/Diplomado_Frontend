@@ -4,6 +4,11 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import RegUser from '../views/Users/Registro.vue';
 import RegEmpresas from '../views/Empresas/RegistroEmpresas.vue'
+import Myperfil from '../views/Users/Myperfil.vue'
+import CrearEmpresa from '../views/Users/CrearEmpresa.vue'
+
+
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -34,6 +39,34 @@ const routes = [
     auth: true
 }
 },
+{
+
+  path: '/myperfil',
+  name: 'Myperfil',
+  component: Myperfil,
+  meta: {
+    auth: true
+}
+},
+{
+
+  path: '/crearempresa',
+  name: 'CrearEmpresa',
+  component: CrearEmpresa,
+  meta: {
+    auth: true
+}
+},
+{
+  path: '/product',
+  name: 'Product',
+  component: Product,
+  meta: {
+      auth: true
+  }
+
+},
+
 ]
 
 const router = new VueRouter({

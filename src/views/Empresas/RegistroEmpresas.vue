@@ -1,6 +1,6 @@
 <template>
   <div style="max-height: 200%">
-   <!--  <div class="row p-2 mx-0">
+    <!--  <div class="row p-2 mx-0">
       <div class="col-12 align-self-center text-center">
         <div class="container d-flex justify-content-center mb-4"></div>
 
@@ -37,7 +37,7 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>  -->
 
     <!-- imagenes subir arriba -->
 
@@ -51,44 +51,25 @@
           </div>
           <h1>Registro</h1>
 
-          <form @submit.prevent="register">
-            <label for="social">Razon Social</label>
-            <strong style="color: red"> * </strong>
+          <form
+            @submit.prevent="register"
+            enctype="multipart/form-data"
+            @change="prevista"
+          >
+            <input type="file" ref="file" id="file" accept="image/*" required />
+            &nbsp;
+            <p><b>Previsualizacion:</b></p>
             <br />
-            <input
-              class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
-              type="text"
-              size="50"
-              v-model="social"
-              required
-            />
-            <!--   <br /> -->
-            <!--  <label for="nombre">Nombre </label>
-            <strong style="color: red"> * </strong>
-            <br />
-           <input    type="text"    class="col-xs-12 col-sm-12 col-md-12 col-lg-12"       size="90"    v-model="nombre"    required  /> -->
-            <br />
-            <label for="email">Email </label>
-            <strong style="color: red"> * </strong>
-            <br />
-            <input
-              type="email"
-              class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
-              size="90"
-              v-model="email"
-              required
-            /><br />
-            <label for="celular">Celular </label>
-            <strong style="color: red"> * </strong>
-            <br />
-            <input
-              type="text"
-              class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
-              size="50"
-              v-model="celular"
-              required
-            /><br />
-
+            <div v-if="image === ''"></div>
+            <div>
+              <img :src="image" alt="" height="400px" width="400px" />
+            </div>
+            <label for="social">Nombre social de la empresa</label> <br />
+            <input type="text" v-model="social" /> <br />
+            <label for="email">Emaill de la empresa</label> <br />
+            <input type="email" v-model="email" /> <br />
+            <label for="celular">Celular de la empresa</label> <br />
+            <input type="text" v-model="celular" /> <br />
             <div v-if="error">
               <div class="mt-2">
                 <b-alert
@@ -128,18 +109,8 @@
                 </b-alert>
               </div>
             </div>
-            <br />
 
-            <b-button
-              type="submit"
-              @click="showAlert"
-              id="color"
-              block
-              variant="dark"
-              onsubmit="setTimeout(function () { window.location.reload(); }, 10)"
-            >
-              Ingresar
-            </b-button>
+            <button type="submit">Enviar</button>
           </form>
           <div id="mensaje"></div>
         </div>
@@ -156,12 +127,13 @@ export default {
   data() {
     return {
       social: "",
+      image: "",
       /*  nombre: "", */
       email: "",
       celular: "",
       error: false,
       loading: false,
-        subirimage: "",
+      subirimage: "",
       dismissSecs: 5,
       dismissCountDown: 0,
     };
@@ -174,48 +146,45 @@ export default {
     showAlert() {
       this.dismissCountDown = this.dismissSecs;
     },
-  /*   prevista(e) {
+    /*   prevista(e) {
       this.image = URL.createObjectURL(e.target.files[0]);
       this.subirimage = e.target.files[0];
-    }, */
+    }, */ prevista(
+      e
+    ) {
+      this.image = URL.createObjectURL(e.target.files[0]);
+      this.subirimage = e.target.files[0];
+    },
     register() {
-      this.error = false;
-      this.loading = false;
-    const tokens = localStorage.getItem("token"); 
+      var formData = new FormData();
+
+      formData.append("data", JSON.stringify(data));
+        formData.append("files.logo", this.subirimage);
+      console.log(this.subirimage);
+      const tokenverificacion = localStorage.getItem("token");
       axios
         .post(
-          "http://localhost:1337/empresas/",
-
-
-          {
-              headers: {
-                 
-              'Authorization': 'Bearer'  + tokens,
-             /*  "Content-Type": "multipart/form-data", */
+          "http://localhost:1337/empresas",
+          formData,
           
-               'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-               social: this.social,
-            /*  nombre: this.nombre, */
+          {
+            social: this.social,
             email: this.email,
             celular: this.celular,
-            })
-           
-
+               headers: {
+              Authorization: "Bearer " + tokenverificacion,
+               "Content-Type": "multipart/form-data",
+      
+            },
+          },
           
+          {
+         
           }
         )
-        .then((response) => {
-          this.loading = true;
-         
-          // this.$router.push('/registro')
-        })
 
-        .catch((err) => {
-          console.log("Fallo");
-           console.log(tokens);
-          this.error = true;
+        .then((response) => {
+          //this.$router.push('/tag')
         });
     },
   },

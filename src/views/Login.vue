@@ -5,7 +5,8 @@
       <div>
         <div class="text-center">
           <a href="/" title="Home — Unsplash">
-        <img class="login__logo" src="/assets/login.png" /> 
+     <img class="login__logo" src="../assets/login.png" />
+      
           </a>
           <h1 class="login__title mt-4">Login</h1>
           <p class="login__subtitle">Welcome back.</p>
