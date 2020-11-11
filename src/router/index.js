@@ -57,15 +57,7 @@ const routes = [
     auth: true
 }
 },
-{
-  path: '/product',
-  name: 'Product',
-  component: Product,
-  meta: {
-      auth: true
-  }
 
-},
 
 ]
 
