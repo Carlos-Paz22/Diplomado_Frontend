@@ -105,7 +105,7 @@
 
 
        <div class="ingre mt-2 mb-2">
-                  <a id="col_border" href="/product">
+                  <a id="col_border" href="/crearproduct">
                     <button type="button" id="color" class="btn btn-dark btn-lg btn-block"   >
                      Crear Productos
                     </button>
