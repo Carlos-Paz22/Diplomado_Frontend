@@ -35,12 +35,12 @@
           <input type="file" ref="file" id="file" accept="image/*" required /> <br> <br>
    
 
-          <label for="nombre1">Nombre</label> <br>
-          <input type="text" name="nombre1" v-model="nombre1"><br>
+          <label for="nombre">Nombre</label> <br>
+          <input type="text" name="nombre" v-model="nombre"><br>
           <label for="descripcion">Descripcion</label><br>
           <input type="text" name="descripcion" v-model="descripcion"><br>
-          <label for="celular">Celular</label><br>
-          <input type="text" name="celular" v-model="celular"><br>
+          <label for="celular1">Celular</label><br>
+          <input type="text" name="celular1" v-model="celular1"><br>
            <label for="precio">Precio</label><br>
           <input type="text" name="precio" v-model="precio"><br>
 
@@ -117,9 +117,9 @@ export default {
       alerta: false,
       dismissSecs: 5,
       dismissCountDown: 0,
-      nombre1: "",
+      nombre: "",
       descripcion: "",
-      celular: "",
+      celular1: "",
       precio: "",
 
     };
@@ -164,9 +164,9 @@ export default {
 
          formData.append("data", JSON.stringify( {
          
-          nombre1: this.nombre1,
+          nombre: this.nombre,
           descripcion: this.descripcion,
-          celular: this.celular,
+          celular1: this.celular1,
           precio: this.precio
         }));
 

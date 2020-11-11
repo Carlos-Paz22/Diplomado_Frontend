@@ -21,12 +21,12 @@
         
    
 
-          <label for="nombre1">Nombre</label> <br>
-          <input type="text" name="nombre1" v-model="nombre1"><br>
+          <label for="nombre">Nombre</label> <br>
+          <input type="text" name="nombre" v-model="nombre"><br>
           <label for="descripcion">Descripcion</label><br>
           <input type="text" name="descripcion" v-model="descripcion"><br>
-          <label for="celular">Celular</label><br>
-          <input type="text" name="celular" v-model="celular"><br>
+          <label for="celular1">Celular</label><br>
+          <input type="text" name="celular1" v-model="celular1"><br>
           <label for="precio">Precio</label><br>
           <input type="text" name="precio" v-model="precio"><br>
 
@@ -88,9 +88,9 @@ export default {
   },
         data() {
             return {
-                nombre1: "",
+                nombre: "",
                 descripcion: "",
-                celular: "",
+                celular1: "",
                 precio: "",
                 loading: false,
                  dismissSecs: 5,
@@ -115,9 +115,9 @@ export default {
 
                     }).then((response) => {
                        
-                        this.nombre1 = response.data.nombre1
+                        this.nombre = response.data.nombre
                         this.descripcion = response.data.descripcion
-                         this.celular = response.data.celular
+                         this.celular1 = response.data.celular1
                          this.precio = response.data.precio
                     })
                             
@@ -137,9 +137,9 @@ export default {
 
                         axios.put("http://localhost:1337/productos/"+ this.id,{
 
-                            nombre1: this.nombre1,
+                            nombre: this.nombre,
                             descripcion: this.descripcion,
-                            celular: this.celular,
+                            celular1: this.celular1,
                             precio: this.precio
                           
                         },
