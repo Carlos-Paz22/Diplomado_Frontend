@@ -9,6 +9,9 @@ import CrearEmpresa from '../views/Users/CrearEmpresa.vue'
 import CrearProduct from '../views/Productos/CrearProduct.vue'
 import MyProduct from '../views/Productos/MyProduct.vue'
 import EditarProduct from '../views/Productos/EditarProduct.vue'
+import CreateCategoria from '../views/categorias/CreateCategoria.vue'
+import EditCategoria from '../views/categorias/EditCategoria.vue'
+import Categoria from '../views/categorias/Categoria.vue'
 
 
 Vue.use(VueRouter)
@@ -87,6 +90,35 @@ const routes = [{
         meta: {
             auth: true
         }
+    },
+    {
+        path: '/categoria/create',
+        name: 'CreateCategoria',
+        component: CreateCategoria,
+        meta: {
+            auth: true
+        }
+    },
+    {
+        //: los puintos son por que varian los id
+        path: '/categorias/:id/edit',
+        name: 'EditCategoria',
+        component: EditCategoria,
+        meta: {
+            auth: true
+        }
+    },
+
+    {
+        path: '/categoria',
+        name: 'Categoria',
+        component: Categoria,
+        meta: {
+            auth: true
+        }
+
+
+
     },
 
 

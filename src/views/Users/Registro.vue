@@ -74,7 +74,7 @@
             <br />
 
             <b-button     type="submit"    @click="showAlert"     id="color" block          variant="dark"    onsubmit="setTimeout(function () { window.location.reload(); }, 10)"  >
-              Ingresar
+              Rgistrarme
             </b-button>
           </form>
           <div id="mensaje"></div>
