@@ -18,7 +18,7 @@
             <b-nav-item href="/login">Login</b-nav-item>
             <b-nav-item href="/registro">Registro</b-nav-item>
             <b-nav-item href="/myperfil">Mi Perfil</b-nav-item>
-             <div class="input-group-prepend">
+             <!--div class="input-group-prepend">
       <select
         class="input-group-text bg-transparent text-black rounded-right"
         v-model="checkedNames"
@@ -33,7 +33,7 @@
         </option>
         <option class="text-dark" value="" selected>Todas</option>
       </select>
-    </div>
+    </div-->
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->
@@ -120,11 +120,11 @@
           :key="items.id"
         >
           <Galeria :items="items" />
-           <b-button class="tamaño" @click="bajarImagen(items.imagen.url) " variant="outline-success">
+           <!--b-button class="tamaño" @click="bajarImagen(items.imagen.url) " variant="outline-success">
 
         <b-icon icon="download"></b-icon> Descargar
     
-      </b-button>
+      </b-button-->
    <div v-if="alerta === true">
           <div class="mt-2">
             <b-alert

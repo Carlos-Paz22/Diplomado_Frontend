@@ -51,10 +51,7 @@
             <!-- Correo: {{ user.email }} -->
           </p>
 
-          <div>
-           
-            <h1>Mis Imagenes</h1>
-          </div>
+          
         </b-carousel-slide>
       </b-carousel>
     </div>

@@ -17,7 +17,7 @@
          
       <h1>Crear Imagen</h1>
        <div class="ingre mt-2 mb-2">
-                  <a id="col_border" href="/tag">
+                  <a id="col_border" href="/categoria">
                     <button   type="button"  id="color" class="btn btn-dark btn-lg btn-block" >
                      Crear Categorias
                     </button>
