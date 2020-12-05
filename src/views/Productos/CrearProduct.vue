@@ -155,19 +155,20 @@ export default {
         const token = localStorage.getItem("token");
         var formData = new FormData();
       
-        let data = { tags: this.checkedNames };
+        /* let data = { cat: this.checkedNames }; */
 
         formData.append("files.imagen", this.subirimage);
        //  formData.append("data", JSON.stringify(data));
 
-       
 
          formData.append("data", JSON.stringify( {
          
           nombre: this.nombre,
           descripcion: this.descripcion,
           celular1: this.celular1,
-          precio: this.precio
+          precio: this.precio,
+          categorias: this.cat
+
         }));
 
         

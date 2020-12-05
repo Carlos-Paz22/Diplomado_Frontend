@@ -12,8 +12,9 @@
         </div>
         <h1>Editando el Producto</h1>
 
-          @change="prevista"
+         
          <form
+        
           @submit.prevent="guardar"
           
           enctype="multipart/form-data"
