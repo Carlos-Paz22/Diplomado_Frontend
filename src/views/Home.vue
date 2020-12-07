@@ -1,153 +1,48 @@
 <template >
-  <div class="index">
-    <!-- <input
-      type="text"
-      v-model="buscar"
-      aria-label="Amount (to the nearest dollar)"
-    /> -->
-   
-
-    <div class="container-flex">
-      <b-navbar toggleable="md" type="dark" class="Nav">
-        <b-navbar-brand href="/">Inicio</b-navbar-brand>
-
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-        <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav>
-            <b-nav-item href="/login">Login</b-nav-item>
-            <b-nav-item href="/registro">Registro</b-nav-item>
-            <b-nav-item href="/myperfil">Mi Perfil</b-nav-item>
-             <!--div class="input-group-prepend">
-      <select
-        class="input-group-text bg-transparent text-black rounded-right"
-        v-model="checkedNames"
-      >
-        <option
-          class="text-dark"
-          v-for="tag in tags"
-          :key="tag.id"
-          :value="tag.nombre"
-        >
-          {{ tag.nombre }}
-        </option>
-        <option class="text-dark" value="" selected>Todas</option>
-      </select>
-    </div-->
-          </b-navbar-nav>
-
-          <!-- Right aligned nav items -->
-          <b-navbar-nav class="ml-auto">
-            <b-nav-form>
-              <b-form-input
-                size="sm"
-                class="mr-sm-2"
-                 v-model="buscar"
-                placeholder="Search"
-              
-              ></b-form-input>
-              <b-button size="sm" class="my-2 my-sm-0" type="submit"
-                >Search</b-button
-              >
-            </b-nav-form>
-          </b-navbar-nav>
-        </b-collapse>
-      </b-navbar>
-    </div>
-
-    <div class="container-flex">
-      <b-carousel
-        id="carousel-1"
-        v-model="slide"
-        :interval="4000"
-        controls
-        indicators
-        background="#ababab"
-        img-width="1024"
-        img-height="480"
-        style="text-shadow: 1px 1px 2px #333"
-        @sliding-start="onSlideStart"
-        @sliding-end="onSlideEnd"
-      >
-        <!-- Text slides with image -->
-        <b-carousel-slide
-         
-          text="Nulla vitae elit libero, a pharetra augue mollis interdum."
-          img-src="https://picsum.photos/1024/480/?image=52"
-          style="max-height: 400px"
-        ></b-carousel-slide>
-
-        <!-- Slides with custom text -->
-        <b-carousel-slide
-          img-src="https://picsum.photos/1024/480/?image=54"
-          style="max-height: 400px"
-        >
-          <h1>Hello world!</h1>
-        </b-carousel-slide>
-
-        <!-- Slides with image only -->
-        <b-carousel-slide
-          img-src="https://picsum.photos/1024/480/?image=58"
-          style="max-height: 400px"
-        ></b-carousel-slide>
-
-        <!-- Slides with img slot -->
-        <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
-        <b-carousel-slide>
-          <template #img>
-            <img
-              class="d-block img-fluid w-100"
-              width="1024"
-              height="480"
-              src="https://picsum.photos/1024/480/?image=55"
-              style="max-height: 400px"
-              alt="image slot"
-            />
-          </template>
-        </b-carousel-slide>
-      </b-carousel>
-    </div>
-
-    <div class="container mt-4">
-      <div class="row">
-        <div class="col-12"></div>
-      </div>
-
-      <div class="row">
-        <div
-          class="col-12 col-sm-12 col-md-6 col-lg-4"
-          v-for="items in galeria"
-          :key="items.id"
-        >
-          <Galeria :items="items" />
-           <!--b-button class="tamaño" @click="bajarImagen(items.imagen.url) " variant="outline-success">
-
-        <b-icon icon="download"></b-icon> Descargar
+<div>
+  
     
-      </b-button-->
-   <div v-if="alerta === true">
-          <div class="mt-2">
-            <b-alert
-              :show="dismissCountDown"
-              dismissible
-              variant="danger"
-              @dismissed="dismissCountDown = 0"
-              @dismiss-count-down="countDownChanged"
-            >
-              <p><strong>Error</strong> Seleccione una o mas categorias</p>
-              <b-progress
-                variant="danger"
-                :max="dismissSecs"
-                :value="dismissCountDown"
-                height="4px"
-              ></b-progress>
-            </b-alert>
-          </div>
-        </div>
-        </div>
-      </div>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://picsum.photos/1024/480/?image=52" class="d-block w-100" alt="..." style="max-height: 400px">
+    </div>
+    <div class="carousel-item">
+      <img src="https://picsum.photos/1024/480/?image=52" class="d-block w-100" alt="..." style="max-height: 400px">
+    </div>
+    <div class="carousel-item">
+      <img src="https://picsum.photos/1024/480/?image=52" class="d-block w-100" alt="..." style="max-height: 400px">
     </div>
   </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<div class="row justify-content-center">
+  <h3>Banco de empresas</h3>
+  <div class="col-11 col-sm-7 col-md-5 col-lg-4 " v-for = "imagen in imagenes" :key="imagen.id" >
+    <div class="card">
+      <div class="imgBx">
+         <img id="galeria" :src="'http://localhost:1337'+imagen.logo.url">
+      </div>
+      <div class="details">    
+       <h5 class="card-title">{{ imagen.user.username}}</h5>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+  
 </template>
 <script>
 import Galeria from "@/components/Galeria.vue";
@@ -164,6 +59,7 @@ export default {
     return {
       galeria: [],
       user: {},
+      imagenes: null,
       slide: 0,
       sliding: null,
       tags: [],
@@ -171,45 +67,17 @@ export default {
       buscar: "",
       url:"",
        alerta: false,
+       search: "",
+    salir:"",
+    user:"",
     };
   },
   mounted() {
-    axios.get("http://localhost:1337/categorias").then((response) => {
-      this.tags = response.data;
-    }),
-      (this.Search = debounce(this.Search, 600));
-
+    this.user =JSON.parse(localStorage.getItem('user'));
     this.traerimagen();
+    
   },
-  watch: {
-    checkedNames(value) {
-      this.Search(value);
-    },
-    buscar(value) {
-      this.Search(value);
-    },
-  },
-
-  methods: {
-    Search(value) {
-      axios
-        .get("http://localhost:1337/empresas?_sort=id%3ADESC", {
-          params: {
-            "tags.nombre_contains": value,
-          },
-        })
-        .then((response) => {
-          this.galeria = response.data;
-        });
-    },
-
-    onSlideStart(slide) {
-      this.sliding = true;
-    },
-    onSlideEnd(slide) {
-      this.sliding = false;
-    },
-
+  methods:{
     traerimagen() {
       axios
         .get("http://localhost:1337/empresas?_sort=id%3ADESC", {
@@ -218,47 +86,13 @@ export default {
           },
         })
         .then((response) => {
-          this.galeria = response.data;
-          console.log(response);
+          this.imagenes = response.data;
+          console.log(this.imagenes);
         });
     },
-    bajarImagen(imagenUrl) {
-      this.url = "http://localhost:1337" + imagenUrl;
-      axios({
-        method: "get",
-        url: this.url,
-        responseType: "arraybuffer",
-      })
-        .then((response) => {
-          this.forceFileDownload(response);
-        })
-        .catch(() => console.log("Fallo"));
-    },
     
-    forceFileDownload(response){
-      const url = window.URL.createObjectURL(new Blob([response.data]))
-      const link = document.createElement('a')
-      link.href = url
-      link.setAttribute('download', 'imagen.png') //or any other extension
-      document.body.appendChild(link)
-      link.click()
-      },
-    
-    downloadWithAxios(){
-
-      axios({
-        method: 'get',
-         url:   'http://localhost:1337'+tag.imagen.url,
-        responseType: 'arraybuffer'
-      })
-      .then(response => {
-        
-        this.forceFileDownload(response)
-        
-      })
-      .catch(() => console.log('Fallo al descargar'))
-    }
-  },
+  }
+  
 };
 </script>
 
@@ -266,61 +100,102 @@ export default {
 
 
 <style >
-.Nav {
-  background: rgb(39, 206, 218);
-  width: auto;
+ .format-null{all: unset !important;}
+  .div-search{border:1px solid;border-radius:10px;border-color: #c4c2c2;height: 2.5rem !important;}
+  .input-search{ height: 100% !important;margin-left: 2rem !important;}
+  .avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  .collap1{color: #eeeeee !important; padding-top: 10px !important;font-size: 14px;}
+  .collap1:hover{color: black !important;}
+.box {
+ 
+  width: 300px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 15px;
+  margin-top: 100px;
+ 
+}
+.card {
+  position: relative;
+  width: 300px;
+  height: 350px;
+  background: #fff;
+  margin-top: 50px;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.card:before,
+.card:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background: rgb(52, 252, 185);
+  transition: 0.5s;
+  z-index: -1;
+}
+.card:hover:before {
+  transform: rotate(20deg);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+.card:hover:after {
+  transform: rotate(10deg);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+.card .imgBx {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  background: #222;
+  transition: 0.5s;
+  z-index: 1;
 }
 
-#col_border {
-  text-decoration: none;
+.card:hover .imgBx {
+  bottom: 80px;
 }
-h1 {
-  color: rgb(0, 0, 0);
+
+.card .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card .details {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  height: 60px;
   text-align: center;
 }
 
-.color {
-  background: black;
-}
-
-.btnhome {
-  font-family: Lato, sans-serif;
-  text-decoration: none;
-  width: 1550px;
-  border: 5px solid #2c3e50;
-  color: #2c3e50;
-  display: block;
-
-  font-size: 2rem;
-  letter-spacing: 0.1rem;
-  padding: 1rem;
-  position: relative;
-  text-decoration: none;
+.card .details h2 {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  font-size: 20px;
+  color: #777;
   text-transform: uppercase;
 }
 
-.btnhome::before {
-  content: "";
-  background-color: #e26a6a;
-  box-shadow: 10px 10px 0 #f1c40f, 20px 20px 0 #3498db;
-  position: absolute;
-  left: 0.25rem;
-  top: 0.5rem;
-  height: 102%;
-  width: 102%;
-  z-index: -1;
-  transition: all 0.4s ease;
-}
-
-.btnhome:hover::before {
-  box-shadow: none;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.tamaño{
-  margin-left: 90px;
+.card .details h2 span {
+  font-weight: 500;
+  font-size: 16px;
+  color: #f38695;
+  display: block;
+  margin-top: 5px;
 }
 </style>
