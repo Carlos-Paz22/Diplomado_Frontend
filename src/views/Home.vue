@@ -1,7 +1,5 @@
 <template >
 <div>
-  
-    
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -35,7 +33,7 @@
       <div class="imgBx">
          <img id="galeria" :src="'http://localhost:1337'+imagen.logo.url">
       </div>
-      <div class="details">    
+      <div class="details">
        <h5 class="card-title">{{ imagen.user.username}}</h5>
       </div>
   </div>
