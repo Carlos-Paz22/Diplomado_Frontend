@@ -125,7 +125,8 @@ export default {
           localStorage.setItem("token", data.jwt);
           localStorage.setItem("user", JSON.stringify(data.user));
         /*   console.log(token) */
-          this.$router.push("/");   
+          this.$router.push("/");  
+           window.location.reload(); 
         })
         .catch((err) => {
           this.error = true;

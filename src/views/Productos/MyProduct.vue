@@ -5,7 +5,7 @@
     
 
     <div class="container mt-4">
-          <div class="container d-flex justify-content-center mb-4">
+       <!--    <div class="container d-flex justify-content-center mb-4">
         
 <li href="#" class="btnhome2">
 
@@ -14,7 +14,7 @@
         >
     
   </li>
-        </div>
+        </div> -->
       
       <h1>Mis productos</h1>
          
@@ -113,6 +113,7 @@ export default {
 </script>
 <style >
 .tam {
+  margin-top: 5px;
   width: 300px;
 }
 .letra {

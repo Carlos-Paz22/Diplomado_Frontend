@@ -1,6 +1,6 @@
 <template>
     <div>
-           <div class="container d-flex justify-content-center mb-4">
+          <!--  <div class="container d-flex justify-content-center mb-4">
         
 <li href="#" class="btnhome2">
 
@@ -9,8 +9,8 @@
         >
     
   </li>
-        </div>
-        <h1>Editando el Producto</h1>
+        </div> -->
+        <h1>Editar Producto</h1>
 
          
          <form
@@ -31,8 +31,8 @@
           <label for="precio">Precio</label><br>
           <input type="text" name="precio" v-model="precio"><br>
 
-            <label for="">Actualizar Logo</label>
-  <input type="file" ref="file" id="file" accept="image/*"  /> <br> <br>
+          <!--   <label for="">Actualizar Logo</label>
+  <input type="file" ref="file" id="file" accept="image/*"  /> <br> <br> -->
 
      <div v-if="loading">
               <div class="mt-2">
@@ -66,7 +66,7 @@
       </div-->
 
 
-     <b-button type="submit" @click="showAlert"  id="color" block variant="dark"  onsubmit="setTimeout(function () { window.location.reload(); }, 10)"  >
+     <b-button class="mt-2" type="submit" @click="showAlert"  id="color" block variant="dark"  onsubmit="setTimeout(function () { window.location.reload(); }, 10)"  >
               Guardar
     </b-button>
        

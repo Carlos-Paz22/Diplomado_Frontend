@@ -1,7 +1,7 @@
   <template>
   
-  <div class="row p-2 bg-white sticky-top mx-0">
-    <div class="col-12 align-self-center text-center">
+  <div >
+    <!-- <div class="col-12 align-self-center text-center">
 
         
         <div class="container d-flex justify-content-center mb-4">
@@ -13,17 +13,17 @@
         >
     
   </li>
-        </div>
+        </div> -->
          
-      <h1>Crear Imagen</h1>
+     <!--  <h1>Crear Imagen</h1>
        <div class="ingre mt-2 mb-2">
                   <a id="col_border" href="/categoria">
                     <button   type="button"  id="color" class="btn btn-dark btn-lg btn-block" >
                      Crear Categorias
                     </button>
                   </a>
-      </div>
-    </div>
+      </div> 
+    </div>-->
     <hr />
     <div class="row mx-0">
       <div class="col-12 col-md-6 text-star mx-0">

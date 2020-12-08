@@ -1,84 +1,46 @@
 
 <template>
   <div>
+    <div class="box">
+      <a :href="`/productEmpresa/${items.id}/mostrar`">
+        <div class="card">
+          <div class="imgBx">
+            <img
+              id="galeria"
+              :src="'http://localhost:1337' + items.logo.url"
+              class="img-fluid"
+            />
+          </div>
 
- 
-   <div class="box" >
-  
-     <a :href="`/myproduct/${items.id}/mostrar`">
-    <div class="card">
-      <div class="imgBx">
-         <img id="galeria"  :src="'http://localhost:1337'+items.logo.url" class="img-fluid"  />
-      
-      </div>
-      
-      <div class="details">
-     
-       
-       <h5 class="card-title">{{ items.user.username}}</h5>
-        
- 
-      
-      </div>
-      
+          <div class="details">
+            <h5 class="card-title">{{ items.social }}</h5>
+          </div>
+        </div>
+      </a>
     </div>
-     </a>
   </div>
-  </div>
-
-
-
- 
-
-  
 </template>
  
 
 
 <script>
-import axios from 'axios';
- 
-
+import axios from "axios";
 
 export default {
   name: "Galeria",
   props: ["items"],
 
-  methods: {
-    onClick(){
-      
-      axios({
-        url:"http://localhost:1337/empresas/" ,
-        method: 'GET',
-        responseType: 'blob',
-      }).then((response) =>{
-        var fileUrl= window.URL.createObjectURL(new Blob([response.data]))
-        var fileLink = document.createElement('a')
-      fileLink.href = fileUrl
-
-    fileLink.setAttribute('download','imagen.jpeg')
-    document.body.appendChild(fileLink)
-
-    fileLink.click()
-
-      })
-    }
-  }
-
-
+  methods: {},
 };
 </script>
 
 <style>
-
 .box {
- 
   width: 300px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: 15px;
   margin-top: 100px;
- 
 }
 .card {
   position: relative;

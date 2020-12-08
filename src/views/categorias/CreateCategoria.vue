@@ -1,14 +1,16 @@
 <template>
     
-    <div>
+    <div class=" container  ">
         <h1>Crear Nueva categoria</h1>
-    <a href="/categoria">Volver</a>
+    <!-- <a href="/categoria">Volver</a> -->
 
-    <form @submit.prevent="guardar">
+    <form class="main" @submit.prevent="guardar">
 
-        <label for="nombre">Nombre</label>
-        <input type="text" v-model="nombre" > 
-        <button type="submit">Guardar</button>
+        <label class="mr-2" for="nombre">Nombre</label>
+        <input  class="mr-2" type="text" v-model="nombre" > 
+ <b-button type="submit"  variant="success">Guardar</b-button>
+       
+       
 
     </form>
 
@@ -55,3 +57,12 @@ export default {
    
 }
 </script>
+
+<style >
+
+.main{
+    margin-top: 50px;
+}
+
+
+</style>

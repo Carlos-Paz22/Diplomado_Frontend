@@ -9,9 +9,9 @@
         <button class=" format-null pointer" style="margin-left:10px !important;" :href="`/`" title="Home - Unsplash">
       <a class="format-null" :href="`/`">
       <div>
-        <span style="font-size:16px; font-weight: bold; position: relative;top: -3px;">Unsplash</span>
+      <!--   <span style="font-size:16px; font-weight: bold; position: relative;top: -3px;">Unsplash</span> -->
       </div>
-      <span style="font-size:13px; position:relative; top:-13px; ">Photos for everyone</span>
+    <!--   <span style="font-size:13px; position:relative; top:-13px; ">Photos for everyone</span> -->
       </a>
       </button>
      
@@ -29,6 +29,9 @@
         <button class="btn btn-sm btn-default" @click="$router.push('/myproduct')" style="color:#767676;">Mis Productos</button>
       </li>
       <li class="nav-it li-second ml-2  join py-1" style="border-left: 1px solid #d1d1d1;height:30px;" v-if="mos">
+        <button class="btn btn-sm btn-default" @click="$router.push('/categoria')" style="color:#767676;">Mis Categorias</button>
+      </li>
+      <li class="nav-it li-second ml-2  join py-1" style="border-left: 1px solid #d1d1d1;height:30px;" v-if="mos">
         <button class="btn btn-sm btn-default" @click="$router.push('/')" style="color:#767676;">Destacados</button>
       </li>
      
@@ -40,7 +43,8 @@
           
           <ul class="dropdown-menu" style="background-color:black;text-color:#ffffff !important;top:42px;right:0px;width:200px">
             <button class="dropdown-item collap1" type="button" @click="$router.push('/myperfil')">View profile</button>
-            <button class="dropdown-item collap1" type="button" >Stats</button>
+            <button class="dropdown-item collap1" type="button" @click="$router.push('/crearproduct')">Crear producto</button>
+            <button class="dropdown-item collap1" type="button" @click="$router.push('/categoria/create')">Crear Categoria</button>
             <button class="dropdown-item collap1" type="button">Account settings</button>
             <div class="dropdown-divider"></div>
             <button class="dropdown-item collap1" @click="salir" type="button" >Logout @{{user.username}}</button>

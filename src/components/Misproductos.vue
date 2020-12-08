@@ -1,55 +1,56 @@
 
 <template>
   <div>
-
- 
-   <div class="box" >
-  
-  
-    <div class="card">
-      <div class="imgBx">
-         <img  :src="'http://localhost:1337'+items.imagen.url" class="img-fluid"  />
-      
+    <div class="box">
+      <div class="card">
+        <div class="imgBx">
+          <img
+            :src="'http://localhost:1337' + items.imagen.url"
+            class="img-fluid"
+          />
+        </div>
+        <div class="details">
+          
+            <h5 class="card-title">{{ items.nombre }}</h5>
+             <h5 class="card-title"> $ {{ items.precio }}</h5>
+             
+          </div>
       </div>
- 
+
+     
+
+      <div class="  col-10 descripcion">
+        <p>
+         
+          {{ items.descripcion }} <br />
+         
+          Celular: {{ items.celular1 }}
+        </p>
+      </div> 
     </div>
   </div>
-  </div>
-
-
-
-
 </template>
  
 
 
 <script>
-import axios from 'axios';
- 
-
+import axios from "axios";
 
 export default {
   name: "Galeria",
   props: ["items"],
 
-  methods: {
-    
-  }
-
-
+  methods: {},
 };
 </script>
 
 <style>
-
 .box {
- 
   width: 300px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: 15px;
   margin-top: 100px;
- 
 }
 .card {
   position: relative;
@@ -129,5 +130,9 @@ export default {
   color: #f38695;
   display: block;
   margin-top: 5px;
+}
+
+.descripcion {
+  font-family: Lato, sans-serif;
 }
 </style>

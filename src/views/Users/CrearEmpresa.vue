@@ -1,23 +1,8 @@
 <template>
-  <div class="row p-2 bg-white sticky-top mx-0">
-    <div class="col-12 align-self-center text-center">
-
-        
-        <div class="container d-flex justify-content-center mb-4">
-        
-<li href="#" class="btnhome2">
-
- <router-link to="/myperfil" id="col_border"
-          ><h1 class="text-align-center">Volver</h1></router-link
-        >
+  <div class="row p-2  sticky-top mx-0">
     
-  </li>
-        </div>
-         
-      <h1>Crear Imagen</h1>
-    </div>
     <hr />
-    <div class="row mx-0">
+    <div class="row mx-0 mt-4">
       <div class="col-12 col-md-6 text-star mx-0">
        
         <form
@@ -27,11 +12,11 @@
         >
           <input type="file" ref="file" id="file" accept="image/*" required /> <br><br>
 
-         <label for="social">Nombre Social</label> <br>
+         <label for="social">Nombre empresa</label> <br>
           <input type="text" name="social" v-model="social"><br>
-          <label for="email">Email</label><br>
+          <label for="email">Email Empresa</label><br>
            <input type="email" name="email" v-model="email"><br>
-           <label for="celular">Celular</label><br>
+           <label for="celular">Celular Empresa</label><br>
            <input type="celular" name="celular" v-model="celular"><br>
 
 
@@ -183,80 +168,3 @@ export default {
 };
 </script>
 
-<style >
-.colorsub {
-  background-color: green;
-}
-
-#colorid {
-  background: green;
-}
-
-
-
-/* https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/White_check.svg/1200px-White_check.svg.png 
-*/
-
-.custom-checkbox {
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-}
-
-.custom-checkbox .checkmark {
-  width: 100%;
-  height: 100%;
-  border: 2px solid #222;
-  display: inline-block;
-  border-radius: 3px;
-  background: #222 url(https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/White_check.svg/1200px-White_check.svg.png) center/1250% no-repeat;
-  transition: background-size 0.2s ease;
-}
-
-.custom-checkbox input:checked + .checkmark {
-  background-size: 60%;
-  transition: background-size 0.25s cubic-bezier(0.7, 0, 0.18, 1.24);
-}
-
-.custom-checkbox input {
-  display: none;
-}
-
-.btnhome2 {
-    font-family: Lato, sans-serif;
-  text-decoration: none;
-width: 1000px;
-  border: 5px solid #2c3e50;
-  color: #2c3e50;
-  display: block;
- 
-  font-size: 2rem;
-  letter-spacing: 0.1rem;
-  padding: 1rem;
-  position: relative;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.btnhome2::before {
-  content: "";
-  background-color: #E26A6A;
-  box-shadow: 10px 10px 0 #F1C40F, 
-              20px 20px 0 #3498DB;
-  position: absolute;
-  left: 0.25rem;
-  top: 0.5rem;
-  height: 102%;
-  width: 102%;
-  z-index: -1;
-  transition: all 0.4s ease;
-}
-
-.btnhome2:hover::before {
-  box-shadow: none;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-</style>
