@@ -1,28 +1,56 @@
 <template>
-  <div class="row p-2  sticky-top mx-0">
-    
-    <hr />
-    <div class="row mx-0 mt-4">
-      <div class="col-12 col-md-6 text-star mx-0">
-       
-        <form
-          @submit.prevent="subirimagen"
-          @change="prevista"
-          enctype="multipart/form-data"
-        >
-          <input type="file" ref="file" id="file" accept="image/*" required /> <br><br>
+  <div>
+    <div class="container-fluid mt-4">
+      <div class="row">
+        <div id="tamaño-regis" class="container-fluid">
+          <div class="text-center">
+            <a href="/">
+              <!--      <img class="resitro" src="./assets/login.png" /> -->
+            </a>
+          </div>
+          <h1 class="color_reg">Registro</h1>
 
-         <label for="social">Nombre empresa</label> <br>
-          <input type="text" name="social" v-model="social"><br>
-          <label for="email">Email Empresa</label><br>
-           <input type="email" name="email" v-model="email"><br>
-           <label for="celular">Celular Empresa</label><br>
-           <input type="celular" name="celular" v-model="celular"><br>
+          <form
+            @submit.prevent="register"
+            enctype="multipart/form-data"
+            @change="prevista"
+          >
+            <input type="file" ref="file" id="file" accept="image/*" required />
+            &nbsp;
+            <p><b>Previsualizacion:</b></p>
+            <br />
+            <div v-if="image === ''"></div>
+            <div>
+              <img :src="image" alt="" height="400px" width="400px" />
+            </div>
+            <label for="social">Nombre social de la empresa</label> <br />
+            <input   class="col-xs-12 col-sm-12 col-md-12 col-lg-12" type="text" v-model="social" /> <br />
+            <label for="email">Emaill de la empresa</label> <br />
+            <input   class="col-xs-12 col-sm-12 col-md-12 col-lg-12" type="email" v-model="email" /> <br />
+            <label for="celular">Celular de la empresa</label> <br />
+            <input   class="col-xs-12 col-sm-12 col-md-12 col-lg-12" type="text" v-model="celular" /> <br />
+              
+            <!--    <div v-if="error">
+              <div class="mt-2">
+                <b-alert
+                  :show="dismissCountDown"
+                  dismissible
+                  variant="danger"
+                  @dismissed="dismissCountDown = 0"
+                  @dismiss-count-down="countDownChanged"
+                >
+                  <p><strong>Error</strong> Usuario / Correo Invalido</p>
+                  <b-progress
+                    variant="danger"
+                    :max="dismissSecs"
+                    :value="dismissCountDown"
+                    height="4px"
+                  ></b-progress>
+                </b-alert>
+              </div>
+            </div> -->
 
-
-
-
-       <div v-if="loading">
+            <div v-if="loading">
               <div class="mt-2">
                 <b-alert
                   :show="dismissCountDown"
@@ -41,39 +69,15 @@
                 </b-alert>
               </div>
             </div>
-            
-
-          <b-button
-          class="mt-2"
-            type="submit"
-            id="colorid"
-            @click="showAlert"
-            onsubmit="setTimeout(function () { window.location.reload(); }, 10)"
-          >
-            <b-icon icon="cloud-upload" aria-hidden="true"></b-icon> Enviar
-            
-          </b-button>
-
-          
-        </form>
-
-         
-        
-        </div>
-      </div>
-      <div
-        class="col-12 col-md-6 text-center justify-content-center mx-auto"
-        style="height: 500px"
-      >
-        <p><b>Previsualizacion:</b></p>
-        <br />
-        <div v-if="image === ''"></div>
-        <div>
-          <img  :src="image" alt=""  height="400px" width="400px"/>
+            <button type="submit" id="color" class=" mt-2 btn btn-dark btn-lg btn-block">
+              Registrarse
+            </button>
+          </form>
+          <div id="mensaje"></div>
         </div>
       </div>
     </div>
-  
+  </div>
 </template>
 
 <script>
@@ -90,13 +94,13 @@ export default {
       alerta: false,
       dismissSecs: 5,
       dismissCountDown: 0,
-      social: '',
+      social: "",
       email: "",
-      celular:"",
-      loading: false
+      celular: "",
+      loading: false,
     };
   },
-/*   mounted() {
+  /*   mounted() {
     axios.get("http://localhost:1337/categorias/me",{
 
          headers: {
@@ -119,52 +123,50 @@ export default {
       this.image = URL.createObjectURL(e.target.files[0]);
       this.subirimage = e.target.files[0];
     },
-    subirimagen() {
+    register() {
+      this.loading = false;
 
-      this.loading = false
-       
-        this.alerta = false;
-        const token = localStorage.getItem("token");
-        var formData = new FormData();
-        let data = { tags: this.checkedNames };
-        formData.append("files.logo", this.subirimage);
-        //formData.append("data", JSON.stringify(data));
-        formData.append("data", JSON.stringify({
-            social: this.social,
-            email: this.email,
-            celular: this.celular,
-            
+      this.alerta = false;
+      const token = localStorage.getItem("token");
+      var formData = new FormData();
+      let data = { tags: this.checkedNames };
+      formData.append("files.logo", this.subirimage);
+      //formData.append("data", JSON.stringify(data));
+      formData.append(
+        "data",
+        JSON.stringify({
+          social: this.social,
+          email: this.email,
+          celular: this.celular,
+        })
+      );
 
-        }));
+      console.log(this.subirimage);
 
-        console.log(this.subirimage);
-
-        axios
-          .post("http://localhost:1337/empresas", formData, {
-
-           /*  nombre: this.nombre, */
-             headers: {
-              Authorization: "Bearer " + token,
-              "Content-Type": "multipart/form-data",
-              //  "Content-Type": "application/json",
-            },
+      axios
+        .post("http://localhost:1337/empresas", formData, {
+          /*  nombre: this.nombre, */
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "multipart/form-data",
+            //  "Content-Type": "application/json",
           },
-               
-         
-           
-         )
-          .then((response) => {
-            this.loading= true
-        //    this.$router.push("/home");
-          })
-           .catch((err) => {
+        })
+        .then((response) => {
+          this.loading = true;
+          //    this.$router.push("/home");
+        })
+        .catch((err) => {
           console.log("Fallo");
-          this.error = true;
+          this.err = true;
         });
-          
-      
     },
   },
 };
 </script>
 
+<style>
+.color_reg {
+  color: black;
+}
+</style>

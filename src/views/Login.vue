@@ -1,21 +1,20 @@
-
 <template>
   <div>
-    <div class="fondo" style="max-height: 100%;">
-      <div>
-        <div class="text-center">
-          <a href="/" title="Home — Unsplash">
-     <img class="login__logo" src="../assets/login.png" />
+    <div class="" style="max-height: 100%">
       
+        <!-- <div class="text-center">
+          <a href="/" title="Home — Unsplash">
+            <img class="login__logo" src="../assets/login.png" />
           </a>
-          <h1 class="login__title mt-4">Login</h1>
+          <h1 class="login__title mt-4 texttitulo">Login</h1>
           <p class="login__subtitle">Welcome back.</p>
-        </div>
-      </div>
+        </div> -->
+      
 
       <div class="flex-container mt-4">
         <div class="row mx-0">
           <div id="tamañoindex" class="container-fluid">
+            <h1 class="texttitulo">Login</h1>
             <form @submit.prevent="login">
               <div>
                 <label class="mt-3" for="email">Email</label> <br />
@@ -28,12 +27,7 @@
               </div>
               <div>
                 <label for="password">Contraseña</label><br />
-                <input
-                  class="col-12"
-                  type="password"
-                  v-model="password"
-                  id="password"
-                />
+                <input class="col-12" type="password" v-model="password" id="password" />
                 <br />
               </div>
               <div v-if="error">
@@ -55,9 +49,32 @@
                   </b-alert>
                 </div>
               </div>
+              <div v-if="loading">
+                <div class="mt-2">
+                  <b-alert
+                    :show="dismissCountDown"
+                    dismissible
+                    variant="success"
+                    @dismissed="dismissCountDown = 0"
+                    @dismiss-count-down="countDownChanged"
+                  >
+                    <p> !!Bienvenido!!</p>
+                    <b-progress
+                      variant="success"
+                      :max="dismissSecs"
+                      :value="dismissCountDown"
+                      height="4px"
+                    ></b-progress>
+                  </b-alert>
+                </div>
+              </div>
               <div class="mt-4">
-
-                <b-button    type="submit"  @click="showAlert"  id="color"    block    variant="dark"
+                <b-button
+                  type="submit"
+                  @click="showAlert"
+                  id="color"
+                  block
+                  variant="dark"
                 >
                   Ingresar
                 </b-button>
@@ -77,9 +94,8 @@
           </div>
         </div>
       </div>
-      <br><br><br><br>
+      <br /><br /><br /><br />
     </div>
-    
   </div>
 </template>
 
@@ -91,7 +107,8 @@ export default {
       email: "",
       password: "",
       error: false,
-      dismissSecs: 5,
+      loading: false,
+      dismissSecs: 2,
       dismissCountDown: 0,
     };
   },
@@ -105,6 +122,7 @@ export default {
 
     login() {
       this.error = false;
+      this.loading= false
       fetch("http://localhost:1337/auth/local/", {
         method: "POST",
         headers: {
@@ -124,26 +142,28 @@ export default {
         .then((data) => {
           localStorage.setItem("token", data.jwt);
           localStorage.setItem("user", JSON.stringify(data.user));
-        /*   console.log(token) */
-          this.$router.push("/");  
-           window.location.reload(); 
+          this.loading= true
+          /*   console.log(token) */
+          /*    this.$router.push("/"); */
+          /*    window.location.reload(); */
+          redireccionar();
         })
         .catch((err) => {
           this.error = true;
         });
+      function redireccionar() {
+        setTimeout("location.href='/'", 3000);
+      }
     },
   },
 };
 </script>
 
-<style >
+<style>
 .fondo {
-  
-  
-  background-image: url('https://images8.alphacoders.com/718/718915.jpg');
-  
-  background-size: cover;
+  background-image: url("https://images8.alphacoders.com/718/718915.jpg");
 
+  background-size: cover;
 }
 
 .login__logo {
@@ -183,4 +203,3 @@ export default {
   margin-bottom: 50px;
 }
 </style>
-

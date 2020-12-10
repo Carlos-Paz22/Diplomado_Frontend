@@ -99,7 +99,7 @@ export default {
       password: "",
       error: false,
       loading: false,
-      dismissSecs: 5,
+      dismissSecs: 2,
       dismissCountDown: 0,
     };
   },
@@ -132,13 +132,16 @@ export default {
         )
         .then((response) => {
           this.loading = true;
-          // this.$router.push('/registro')
+         redireccionar()
         })
 
         .catch((err) => {
           console.log("Fallo");
           this.error = true;
         });
+         function redireccionar() {
+        setTimeout("location.href='/login'", 3000);
+      }
     },
   },
 };

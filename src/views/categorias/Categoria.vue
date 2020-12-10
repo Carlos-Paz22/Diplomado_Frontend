@@ -1,47 +1,10 @@
 <template>
 
 <div>
-   <!--  <div class="container d-flex justify-content-center mb-4">
-        
-<li href="#" class="btnhome2">
-
- <router-link to="/crearproduct" id="col_border"
-          ><h1 class="text-align-center">Volver</h1></router-link
-        >
-    
-  </li>
-        </div> -->
-
-
-
- <!--  <h1>Listado de Categorias</h1>
-  <a href="/categoria/create">Crear </a> <br />
-
  
-  <table>
-    <thead>
-      <tr>
-        <td>ID</td>
-        <td>Nombre</td>
-        <td>Acciones</td>
-      
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="categoria in categorias" :key="categoria.id">
-        <td>{{ categoria.id }}</td>
-        <td>{{ categoria.nombre }}</td>
-        <td>
-          <a :href="`/categorias/${categoria.id}/edit`">Editar</a>
-          <a href="#" @click="eliminar(categoria.id)">Eliminar</a>
-        </td>
-      </tr>
-    </tbody>
-  </table> -->
-
 
   <section>
-  <!--for demo wrap-->
+ 
   <h1>Mis Categorias</h1>
   <div class="tbl-header">
     <table cellpadding="0" cellspacing="0" border="0">
@@ -153,12 +116,20 @@ table{
   margin-top: 0px;
   border: 1px solid rgba(255,255,255,0.3);
 }
+.tbl-content2{
+  height:250px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+
 th{
   padding: 20px 15px;
   text-align: left;
   font-weight: 500;
   font-size: 12px;
-  color: #fff;
+  color: white;
   text-transform: uppercase;
 }
 td{

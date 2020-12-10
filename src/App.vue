@@ -25,6 +25,9 @@
       <li class="nav-it li-second ml-2 join py-1" style="border-left: 1px solid #d1d1d1;height:30px;" v-if="nomos" >
         <button class="btn btn-sm btn-default" @click="$router.push('/login')" style="color:#767676;">Ingresar</button>
       </li>
+      <li class="nav-it li-second ml-2 join py-1" style="border-left: 1px solid #d1d1d1;height:30px;" v-if="nomos" >
+        <button class="btn btn-sm btn-default" @click="$router.push('/registro')" style="color:#767676;">Crear cuenta</button>
+      </li>
       <li class="nav-it li-second ml-2  join py-1" style="border-left: 1px solid #d1d1d1;height:30px;" v-if="mos">
         <button class="btn btn-sm btn-default" @click="$router.push('/myproduct')" style="color:#767676;">Mis Productos</button>
       </li>
