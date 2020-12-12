@@ -152,7 +152,7 @@ export default {
           this.error = true;
         });
       function redireccionar() {
-        setTimeout("location.href='/'", 3000);
+        setTimeout("location.href='/'", 2000);
       }
     },
   },

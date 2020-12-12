@@ -128,4 +128,10 @@ export default {
 	cursor: pointer !important;
 }
 
+body{
+  background: -webkit-linear-gradient(left, #060706, #c55d5d);
+  background: linear-gradient(to right, #79837e, #edeef1);
+  font-family: 'Roboto', sans-serif;
+}
 </style>
+

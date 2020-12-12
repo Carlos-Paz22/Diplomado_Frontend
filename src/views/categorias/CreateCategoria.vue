@@ -6,7 +6,8 @@
           <h1 class="texttitulo">Crear Nueva categoria</h1>
           <form class="main" @submit.prevent="guardar">
             <label class="mr-2" for="nombre">Nombre</label>
-            <input  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-2" type="text" v-model="nombre" /> <br>
+            <strong style="color: red"> * </strong>
+            <input  class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-2" type="text" v-model="nombre" required /> <br>
            <b-button
               class="mt-2"
               type="submit"

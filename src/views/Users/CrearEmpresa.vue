@@ -20,14 +20,20 @@
             <p><b>Previsualizacion:</b></p>
             <br />
             <div v-if="image === ''"></div>
-            <div>
-              <img :src="image" alt="" height="400px" width="400px" />
-            </div>
-            <label for="social">Nombre social de la empresa</label> <br />
+
+            <div v-else>
+              <div class="row justify-content-center">
+              <img class="imgrespon" :src="image" alt=""/>
+            </div></div>
+           
+            <label for="social">Nombre social de la empresa</label>
+            <strong style="color: red"> * </strong>
             <input   class="col-xs-12 col-sm-12 col-md-12 col-lg-12" type="text" v-model="social" /> <br />
-            <label for="email">Emaill de la empresa</label> <br />
+            <label for="email">Emaill de la empresa</label> 
+            <strong style="color: red"> * </strong>
             <input   class="col-xs-12 col-sm-12 col-md-12 col-lg-12" type="email" v-model="email" /> <br />
-            <label for="celular">Celular de la empresa</label> <br />
+            <label for="celular">Celular de la empresa</label> 
+            <strong style="color: red"> * </strong>
             <input   class="col-xs-12 col-sm-12 col-md-12 col-lg-12" type="text" v-model="celular" /> <br />
               
             <!--    <div v-if="error">

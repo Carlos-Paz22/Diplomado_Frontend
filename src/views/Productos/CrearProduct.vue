@@ -10,20 +10,23 @@
             enctype="multipart/form-data"
           >
             <label class="mt-4" for="">Imagen</label> <br />
+            <strong style="color: red"> * </strong>
             <input type="file" ref="file" id="file" accept="image/*" required /> <br />
             <br />
 
             <p><b>Previsualizacion</b></p>
             <br />
             <div v-if="image === ''"></div>
-            <div class="row justify-content-center">
+            <div v-else> <div class="row justify-content-center">
               <img class="imgrespon" :src="image" />
-            </div>
+            </div></div>
+           
 
-            <label for="nombre">Nombre</label> <br />
-            <input class="col" type="text" name="nombre" v-model="nombre" /><br />
-            <label for="descripcion">Descripcion</label><br />
-
+            <label for="nombre">Nombre</label> 
+            <strong style="color: red"> * </strong>
+            <input class="col" type="text" name="nombre" v-model="nombre" required />
+            <label for="descripcion">Descripcion</label>
+<strong style="color: red"> * </strong>
             <textarea
               class="col"
               name="descripcion"
@@ -34,11 +37,14 @@
             ><br />
 
             <!--   <input type="text" name="descripcion" v-model="descripcion" /><br /> -->
-            <label for="celular1">Celular</label><br />
-            <input class="col" type="text" name="celular1" v-model="celular1" /><br />
-            <label for="precio">Precio</label><br />
-            <input class="col" type="text" name="precio" v-model="precio" /><br />
+            <label for="celular1">Celular</label>
+            <strong style="color: red"> * </strong>
+            <input class="col" type="text" name="celular1" v-model="celular1" required /><br />
+            <label for="precio">Precio</label>
+            <strong style="color: red"> * </strong>
+            <input class="col" type="text" name="precio" v-model="precio" required /><br />
             <label for=""> Categoria</label>
+            <strong style="color: red"> * </strong>
           <div v-if="cat == ''">
           <b-alert show variant="warning">No tiene categorias credadas</b-alert>
         </div>

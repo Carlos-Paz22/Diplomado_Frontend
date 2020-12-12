@@ -65,11 +65,11 @@
               <img :src="image" alt="" height="400px" width="400px" />
             </div>
             <label for="social">Nombre social de la empresa</label> <br />
-            <input type="text" v-model="social" /> <br />
+            <input type="text" v-model="social" required /> <br />
             <label for="email">Emaill de la empresa</label> <br />
-            <input type="email" v-model="email" /> <br />
+            <input type="email" v-model="email"  required/> <br />
             <label for="celular">Celular de la empresa</label> <br />
-            <input type="text" v-model="celular" /> <br />
+            <input type="text" v-model="celular" required/> <br />
             <div v-if="error">
               <div class="mt-2">
                 <b-alert

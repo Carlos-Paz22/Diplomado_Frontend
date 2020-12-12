@@ -6,12 +6,13 @@
       <div class="row  ">
         <div id="tamaño-regis" class="container-fluid ">
            <div class="text-center">
+               <h1 class="texttitulo"> Registro</h1>
           <a href="/" >
             <img class="resitro" src="./assets/login.png" />
           </a>
         
         </div>
-          <h1>Registro</h1>
+          
 
           <form @submit.prevent="register">
             <label for="username">Usuario</label>
