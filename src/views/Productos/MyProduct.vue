@@ -27,7 +27,7 @@
           <Misproductos :items="items" />
 
 
-          <a :href="`/product/${items.id}/edit`"><b-button  class="tam" variant="outline-primary">Editar</b-button></a>
+          <a :href="`/product/${items.id}/edit`"><b-button  class="tam" variant="warning">Editar</b-button></a>
           <b-button class="tam" variant="danger" @click="eliminar(items.id)"
             >Eliminar </b-button
           >

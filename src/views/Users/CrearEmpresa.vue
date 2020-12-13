@@ -160,12 +160,16 @@ export default {
         })
         .then((response) => {
           this.loading = true;
+          redireccionar();
           //    this.$router.push("/home");
         })
         .catch((err) => {
           console.log("Fallo");
           this.err = true;
-        });
+        }); 
+         function redireccionar() {
+        setTimeout("location.href='/myperfil'", 3000);
+      }
     },
   },
 };

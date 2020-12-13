@@ -10,7 +10,7 @@
     <table cellpadding="0" cellspacing="0" border="0">
       <thead>
         <tr>
-          <th>ID</th>
+          
           <th>Nombre</th>
           <th>Accion</th>
         </tr>
@@ -19,14 +19,14 @@
   </div>
   <div class="tbl-content">
     <table cellpadding="0" cellspacing="0" border="0">
-      <tbody>
+      <tbody >
         <tr  v-for="categoria in categorias" :key="categoria.id">
-          <td>{{ categoria.id }}</td>
+          
           <td>{{ categoria.nombre }}</td>
         
           <td> 
-          <a  class="mr-2" :href="`/categorias/${categoria.id}/edit`"> <b-button variant="outline-warning">Editar</b-button></a>
-          <a href="#" @click="eliminar(categoria.id)"> <b-button variant="outline-danger">Eliminar</b-button></a>
+          <a  class="mr-2" :href="`/categorias/${categoria.id}/edit`"> <b-button variant="warning">Editar</b-button></a>
+          <a href="#" @click="eliminar(categoria.id)"> <b-button variant="danger">Eliminar</b-button></a>
           </td>
           
         </tr>
@@ -91,6 +91,8 @@ export default {
    
   },
 };
+
+
 </script>
 
 <style >
@@ -111,7 +113,7 @@ table{
   background-color: rgba(255,255,255,0.3);
  }
 .tbl-content{
-  height:500px;
+  height:300px;
   overflow-x:auto;
   margin-top: 0px;
   border: 1px solid rgba(255,255,255,0.3);
@@ -128,8 +130,9 @@ th{
   padding: 20px 15px;
   text-align: left;
   font-weight: 500;
-  font-size: 12px;
-  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
   text-transform: uppercase;
 }
 td{
@@ -137,9 +140,10 @@ td{
   text-align: left;
   vertical-align:middle;
   font-weight: 300;
-  font-size: 15px;
+  font-size: 20px;
+  font-weight: bold;
   color: #fff;
-  border-bottom: solid 1px rgba(255,255,255,0.1);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.199);
 }
 
 

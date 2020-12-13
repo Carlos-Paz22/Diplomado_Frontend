@@ -310,8 +310,8 @@ export default {
   width: 500px;
   max-height: 2000px;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  background-color: none;
+   box-shadow: 0 2px 5px rgb(0, 0, 0); 
+  background: rgba(243, 243, 243, 0.212);
 }
 #colorbuton {
   color: white;
