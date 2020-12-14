@@ -1,83 +1,31 @@
 <template>
   <div>
-  
-
-    <div class="container-flex">
-      <b-carousel
-        id="carousel-1"
-      
-      
-        controls
-        indicators
-        background="#ababab"
-        img-width="1024"
-        img-height="480"
-        style="text-shadow: 1px 1px 2px #333"
-       
-      >
-        <!-- Text slides with image -->
-
-        <!-- Slides with custom text -->
-        <b-carousel-slide
-          img-src="https://picsum.photos/1024/480/?image=14"
-          style="max-height: 400px"
-        >
-          <p class="letra">
-            Bienvenido! {{ user.username }}
-            <!-- Correo: {{ user.email }} -->
-          </p>
-
-          
-        </b-carousel-slide>
-      </b-carousel>
-    </div>
-
     <div class="container mt-4">
-      <div class="row">
-        <div class="col-12"></div>
+       <div class="row justify-content-between">
+        <div class="col-6 col-sm-4 col-mg-4 col-lg-3"><h3>Mi empresa </h3></div>
+        <div class="col-6 col-sm-4 col-mg-4 col-lg-3"><button class="btn btn-primary" v-if="mosemp" @click="$router.push('/crearempresa')">Crear Empresa</button></div>
       </div>
-
-     
-<div v-if="complete" class="container d-flex justify-content-center stydis"> 
-  <li href="#" class="btnhome">
-
-
- <router-link to="/crearempresa" id="col_border"><h1 class="text-align-center disable "  disabled>Crear Empresa </h1></router-link
-        >
-    
-  </li>
-
-</div>
-
-
-
-
-
-
- <br> <br>
-      
-      <div class="row">
-        <div
-          class="col-12 col-sm-12 col-md-6 col-lg-4"
-          v-for="items in galeria"
-          :key="items.id"
-        >
-          <Galeria :items="items" />
-
-          <b-button class="tam" variant="danger" @click="eliminar(items.id)"
-            >Eliminar Empresa</b-button
-          >
-        </div>
-      </div>
-      
+        
+        <div class="row justify-content-around align-items-center mx-0 ">
+          <div class="col-10 col-sm-6 col-md-4 col-lg-3" v-for = "imagen in imagenes" :key="imagen.id">
+            <div class="card" >
+              <div class="imgBx">
+                <img :src="'http://localhost:1337'+imagen.logo.url">
+              </div>
+                <div class="details">
+                <h5 class="card-title">{{imagen.social}}</h5>
+                </div>
+              </div>
+              <div class="row justify-content-center py-2">
+                <button class="btn btn-primary mr-1 ml-3" @click="editar(imagen.id)">Editar</button>
+                <button class="btn btn-danger ml-1" @click="eliminar(imagen.id)">Eliminar</button>
+              </div>
+          </div>
+        </div> 
     </div>
     <div>  
 
     </div>
-
-
-
-
   </div>
 
 
@@ -85,30 +33,30 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import Galeria from "@/components/Galeria.vue";
 import axios from "axios";
 
 export default {
   name: "Myperfil",
-  components: {
-    Galeria,
-  },
-
   data() {
     return {
-      galeria: [],
       user: {},
       tags: [],
+      imagenes:null,
       selectedFile: null,
       complete: true,
       nombre: "",
+      empre:[],
+      mosemp:true,
     };
   },
 
   mounted() {
     this.misimagenes();
- 
+   
+      if(this.empre!='' && this.empre!=null)
+      {
+        this.mosemp=false
+      }
   },
 
   methods: {
@@ -117,10 +65,18 @@ export default {
       localStorage.removeItem("user");
       this.$router.push("/");
     },
-  
-   
-
     misimagenes() {
+      axios
+        .get("http://localhost:1337/empresas/my/", {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        })
+        .then((response) => {
+          this.imagenes = response.data;
+          console.log(this.imagenes);
+        });
+        
       this.user = JSON.parse(localStorage.getItem("user"));
       //recuperar el token para la Auth
       //const tokenverificacion =
@@ -131,27 +87,11 @@ export default {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-          this.galeria = data;
+          
+          this.imagenes = data
+          
         });
     },
-  /*  mistags(){
-      this.user = JSON.parse(localStorage.getItem("user"));
-      //recuperar el token para la Auth
-      //const tokenverificacion =
-      fetch("http://localhost:1337/tags/me/", {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          this.tags = data;
-        });
-
-    },*/
-
     eliminar(id) {
       axios
         .delete("http://localhost:1337/empresas/" + id, {
@@ -163,25 +103,10 @@ export default {
           this.misimagenes();
         });
     },
-
-    register(){
-
-      const tokenverificacion = localStorage.getItem('token')
-            axios.post("http://localhost:1337/empresas",{
-                nombre: this.nombre,
-            },
-            {
-              headers: {
-            'Authorization': 'Bearer ' + tokenverificacion
-         
-         },
-
-            })
-            
-            .then((response) => {
-                //this.$router.push('/tag')
-            })
+    editar(id){
+      
     }
+
   },
 };
 </script>

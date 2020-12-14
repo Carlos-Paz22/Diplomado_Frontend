@@ -64,12 +64,10 @@
 import Galeria from "@/components/Galeria.vue";
 import axios from "axios";
 import debounce from "debounce";
-
 export default {
   name: "Home",
   components: {
     Galeria,
-
   },
   data() {
     return {
@@ -128,16 +126,4 @@ export default {
 	cursor: pointer !important;
 }
 
-body{
-  /* background: -webkit-linear-gradient(left, #25c481, #25b7c4);
-  background: linear-gradient(to right, #25c481, #25b7c4);
-  font-family: 'Roboto', sans-serif; */
-
-
-
-  background: -webkit-linear-gradient(left, #060706, #c55d5d);
-  background: linear-gradient(to right, #4294ca, #638add);
-  font-family: 'Roboto', sans-serif;
-}
 </style>
-

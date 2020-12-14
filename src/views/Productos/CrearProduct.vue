@@ -2,8 +2,8 @@
   <div>
     <div class="flex-container mt-4">
       <div class="row mx-0">
-        <div id="tamcrearpro" class="container-fluid">
-          <h1 class="texttitulo"> Crear producto</h1>
+        <div id="tamcrearpro" style="background-color:white" class="container-fluid">
+          <h2 class="texttitulo text-center py-2"> Crear producto</h2>
           <form
             @submit.prevent="subirimagen"
             @change="prevista"
@@ -15,7 +15,7 @@
             <br />
 
             <p><b>Previsualizacion</b></p>
-            <br />
+            
             <div v-if="image === ''"></div>
             <div v-else> <div class="row justify-content-center">
               <img class="imgrespon" :src="image" />
@@ -49,9 +49,9 @@
           <b-alert show variant="warning">No tiene categorias credadas</b-alert>
         </div>
         <div v-else>
-           <div class="tbl-content2">
+           <div class="">
               <table cellpadding="0" cellspacing="0" border="0">
-                <tbody>
+                
                   <tr v-for="tag in cat" :key="tag.id">
                     <td>
                       <label class="custom-checkbox mt-2">
@@ -69,7 +69,7 @@
                       <label class="ml-2" :for="tag.nombre">{{ tag.nombre }}</label>
                     </td>
                   </tr>
-                </tbody>
+                
               </table>
             </div>
         </div>
@@ -171,6 +171,7 @@ export default {
       })
       .then((response) => {
         this.cat = response.data;
+        
       });
   },
   methods: {
@@ -233,17 +234,12 @@ export default {
 </script>
 
 <style>
-.colorsub {
-  background-color: green;
-}
-#colorid {
-  background: green;
-}
+
 /* https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/White_check.svg/1200px-White_check.svg.png 
 */
 .custom-checkbox {
-  width: 35px;
-  height: 35px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 .custom-checkbox .checkmark {
@@ -311,12 +307,9 @@ export default {
   max-height: 2000px;
   border-radius: 10px;
    box-shadow: 0 2px 5px rgb(0, 0, 0); 
-  background: rgba(243, 243, 243, 0.212);
+  
 }
-#colorbuton {
-  color: white;
-  background: rgb(8, 161, 8);
-}
+
 .imgrespon {
   max-width: 100%;
   height: 200px;

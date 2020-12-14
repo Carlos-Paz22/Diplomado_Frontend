@@ -1,21 +1,12 @@
 <template >
 <div>
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://image.jimcdn.com/app/cms/image/transf/none/path/s6d7954848f1c7d92/image/i0edc20a2f9bd7eaf/version/1607891067/image.jpg" class="d-block w-100" alt="..." style="max-height: 400px">
+    <div class="row mx-0 py-5 justify-content-around">
+      <div class="col-4">
+        <h2>Empresas</h2>
+      </div>
+      <div class="col-2"></div>
     </div>
-    <div class="carousel-item">
-      <img src="https://image.jimcdn.com/app/cms/image/transf/none/path/s6d7954848f1c7d92/image/idee7af7b82b3dbd2/version/1607891067/image.jpg" class="d-block w-100" alt="..." style="max-height: 400px">
-    </div>
-    <div class="carousel-item">
-      <img src="https://image.jimcdn.com/app/cms/image/transf/none/path/s6d7954848f1c7d92/image/ia683d7331b613db8/version/1607891067/image.jpg" class="d-block w-100" alt="..." style="max-height: 400px">
-    </div>
+<<<<<<< HEAD
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -31,10 +22,17 @@
   <div class="col-11 col-sm-7 col-md-5 col-lg-4 " v-for = "imagen in imagenes" :key="imagen.id" >
       <a :href="`/publicproduct/${imagen.slug}.com`">
     <div class="card">
+=======
+<div class="row justify-content-around align-items-center mx-0 ">
+  
+  <div class="col-10 col-sm-6 col-md-4 col-lg-3" v-for = "imagen in imagenes" :key="imagen.id">
+    <div class="card" >
+>>>>>>> f5df422f418adc30c825c0895b041367b061708c
       <div class="imgBx">
-         <img id="galeria" :src="'http://localhost:1337'+imagen.logo.url">
+         <img :src="'http://localhost:1337'+imagen.logo.url">
       </div>
       <div class="details">
+<<<<<<< HEAD
        <h5 class="card-title">{{ imagen.social}}</h5>
        <h5 class="card-title">Contacto: {{ imagen.email}}</h5>
 
@@ -42,24 +40,26 @@
   </div>
   </a>
 </div>
+=======
+       <h5 class="card-title">{{imagen.social}}</h5>
+      </div>
+  </div>
+
+  </div>
+>>>>>>> f5df422f418adc30c825c0895b041367b061708c
 </div>
 </div>
   
 </template>
 <script>
-import Galeria from "@/components/Galeria.vue";
 import axios from "axios";
 import debounce from "debounce";
 
 export default {
   name: "Home",
-  components: {
-    Galeria,
-
-  },
   data() {
     return {
-      galeria: [],
+      
       user: {},
       imagenes: null,
       slide: 0,
@@ -124,10 +124,10 @@ export default {
 }
 .card {
   position: relative;
-  width: 300px;
-  height: 350px;
+  width: 250px !important;
+  height: 300px !important;
   background: #fff;
-  margin-top: 50px;
+  
   border-radius: 4px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
@@ -140,7 +140,7 @@ export default {
   width: 100%;
   height: 100%;
   border-radius: 4px;
-  background: rgb(52, 252, 185);
+  background: #007bff !important;
   transition: 0.5s;
   z-index: -1;
 }

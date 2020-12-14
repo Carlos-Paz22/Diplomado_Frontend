@@ -1,34 +1,19 @@
 <template>
   <div>
     <div class="" style="max-height: 100%">
-      
-        <!-- <div class="text-center">
-          <a href="/" title="Home — Unsplash">
-            <img class="login__logo" src="../assets/login.png" />
-          </a>
-          <h1 class="login__title mt-4 texttitulo">Login</h1>
-          <p class="login__subtitle">Welcome back.</p>
-        </div> -->
-      
-
       <div class="flex-container mt-4">
         <div class="row mx-0">
-          <div id="tamañoindex" class="container-fluid">
-            <h1 class="texttitulo">Login</h1>
+          <div id="tamañoindex" class="container-fluid text-center">
+            <h2 class="">Iniciar sesión</h2>
             <form @submit.prevent="login">
               <div>
-                <label class="mt-3" for="email">Email</label> <br />
-                <input
-                  class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
-                  type="email"
-                  v-model="email"
-                  id="email"
-                />
+                <label class="mt-3" for="email">Email <strong style="color:red">*</strong></label> <br />
+                <input class="col-xs-12 col-sm-12 col-md-12 col-lg-12" type="email" v-model="email" id="email"/>
               </div>
               <div>
-                <label for="password">Contraseña</label><br />
+                <label for="password">Contraseña <strong style="color:red">*</strong></label><br />
                 <input class="col-12" type="password" v-model="password" id="password" />
-                <br />
+                <br/>
               </div>
               <div v-if="error">
                 <div class="mt-2">
@@ -108,9 +93,16 @@ export default {
       password: "",
       error: false,
       loading: false,
-      dismissSecs: 2,
+      dismissSecs: 1,
       dismissCountDown: 0,
+      
     };
+  },
+  mounted(){
+    if (localStorage.getItem('token')!='' && localStorage.getItem('token')!=null) {
+      window.location.href = '/'
+    }
+    
   },
   methods: {
     countDownChanged(dismissCountDown) {
@@ -143,16 +135,13 @@ export default {
           localStorage.setItem("token", data.jwt);
           localStorage.setItem("user", JSON.stringify(data.user));
           this.loading= true
-          /*   console.log(token) */
-          /*    this.$router.push("/"); */
-          /*    window.location.reload(); */
           redireccionar();
         })
         .catch((err) => {
           this.error = true;
         });
       function redireccionar() {
-        setTimeout("location.href='/'", 2000);
+        setTimeout("location.href='/'", 1000);
       }
     },
   },
@@ -199,6 +188,7 @@ export default {
 }
 
 #color {
+  
   background: black;
   margin-bottom: 50px;
 }

@@ -94,6 +94,15 @@ const routes = [{
         }
     },
     {
+        //: los puintos son por que varian los id
+        path: '/myproduct/:id/:estado/edit',
+        name: 'editarMyproduct',
+        component: MyProduct,
+        meta: {
+            auth: true
+        }
+    },
+    {
         path: '/categoria/create',
         name: 'CreateCategoria',
         component: CreateCategoria,
@@ -101,6 +110,7 @@ const routes = [{
             auth: true
         }
     },
+    
     {
         //: los puintos son por que varian los id
         path: '/categorias/:id/edit',
