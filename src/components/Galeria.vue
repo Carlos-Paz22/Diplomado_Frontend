@@ -2,7 +2,7 @@
 <template>
   <div>
     <div class="box">
-      <a :href="`/productEmpresa/${items.id}/mostrar`">
+      <a :href="`/publicproduct/${items.slug}.com`">
         <div class="card">
           <div class="imgBx">
             <img

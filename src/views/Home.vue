@@ -29,14 +29,18 @@
 <div class="  row justify-content-center align-items-center mx-0 ">
  <!--  <h3>Banco de empresas</h3> -->
   <div class="col-11 col-sm-7 col-md-5 col-lg-4 " v-for = "imagen in imagenes" :key="imagen.id" >
+      <a :href="`/publicproduct/${imagen.slug}.com`">
     <div class="card">
       <div class="imgBx">
          <img id="galeria" :src="'http://localhost:1337'+imagen.logo.url">
       </div>
       <div class="details">
        <h5 class="card-title">{{ imagen.social}}</h5>
+       <h5 class="card-title">Contacto: {{ imagen.email}}</h5>
+
       </div>
   </div>
+  </a>
 </div>
 </div>
 </div>
@@ -60,6 +64,7 @@ export default {
       imagenes: null,
       slide: 0,
       sliding: null,
+       props: ["items"],
       tags: [],
       checkedNames: "",
       buscar: "",

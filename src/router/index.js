@@ -12,6 +12,8 @@ import EditarProduct from '../views/Productos/EditarProduct.vue'
 import CreateCategoria from '../views/categorias/CreateCategoria.vue'
 import EditCategoria from '../views/categorias/EditCategoria.vue'
 import Categoria from '../views/categorias/Categoria.vue'
+import PublicProduct from '../views/Empresas/PublicProduct.vue'
+
 
 
 Vue.use(VueRouter)
@@ -120,6 +122,15 @@ const routes = [{
 
 
     },
+    {
+        path: '/publicproduct/:id',
+        name: 'PublicProduct',
+        component: PublicProduct,
+     
+
+
+    },
+
 
 
 ]
