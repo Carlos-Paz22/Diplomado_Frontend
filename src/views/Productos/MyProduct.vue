@@ -1,52 +1,24 @@
 <template>
   <div>
-    
-
-    
-
     <div class="container mt-4">
-       <!--    <div class="container d-flex justify-content-center mb-4">
-        
-<li href="#" class="btnhome2">
-
- <router-link to="/myperfil" id="col_border"
-          ><h1 class="text-align-center">Volver</h1></router-link
-        >
-    
-  </li>
-        </div> -->
-      
-      <h1>Mis productos</h1>
-         
-      <div class="row">
-        <div
-          class="col-12 col-sm-12 col-md-6 col-lg-4"
-          v-for="items in galeria"
-          :key="items.id"
-        >
-          <Misproductos :items="items" />
-
-
-          <a :href="`/product/${items.id}/edit`"><b-button  class="tam" variant="warning">Editar</b-button></a>
-          <b-button class="tam" variant="danger" @click="eliminar(items.id)"
-            >Eliminar </b-button
-          >
+      <div class="row mx-0 justify-content-between">
+        <div class="col-6 col-sm-4 col-mg-4 col-lg-3"><h3>Mis productos </h3></div>
+        <div class="col-6 col-sm-4 col-mg-4 col-lg-3"><button class="btn btn-primary" type="button" @click="$router.push('/crearproduct')">Crear producto</button></div>
+      </div>
+      <div class="row mx-0">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4" v-for="items in galeria" :key="items.id">
+          <Misproductos :items="items" v-if="moses"/>
+          <a :href="`/product/${items.id}/edit`" class="format-null">
+          <button class="btn btn-success" >Editar</button></a>
+          <button class="btn btn-info" @click="eliminar(items.id)">Eliminar</button>
+          <a :href="`/myproduct/${items.id}/${items.estado}/edit`" class="format-null">
+          <button class="btn btn-secondary" @click="estados(items.estado)">{{items.estado}}</button></a>
+          
         </div>
       </div>
-      
     </div>
-    <div>
-    </div>
-
-
-
-
   </div>
-
-
-
 </template>
-
 <script>
 // @ is an alias to /src
 import Misproductos from "@/components/Misproductos.vue";
@@ -57,27 +29,66 @@ export default {
   components: {
     Misproductos,
   },
-
   data() {
     return {
+      
       galeria: [],
       user: {},
       tags: [],
       selectedFile: null,
       complete: true,
       nombre: "",
+      moses:true,
+      estado:'',
+      valor:''
     };
   },
 
   mounted() {
     this.misimagenes();
- 
+    
+    
+     this.token = localStorage.getItem("token");
+    this.id = this.$route.params.id;
+
+    axios
+      .get("http://localhost:1337/productos/" + this.id, {
+        headers: {
+          Authorization: "Bearer " + this.token,
+        },
+      })
+      .then((response) => {
+        this.estado = response.data.estado;
+        console.log('Strapi '+this.estados)
+        
+      });
   },
-
+  
   methods: {
-   
-   
-
+      estados(){
+        
+        if(this.estado=='activo'){
+          localStorage.setItem('estado','inactivo')
+        }else{
+          localStorage.setItem('estado','activo')
+        }
+        this.valor=localStorage.getItem('estado')
+      axios
+        .put(
+          "http://localhost:1337/productos/" + this.id,{
+            estado: this.valor,
+          },
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response)
+        });
+          
+        },
     misimagenes() {
       this.user = JSON.parse(localStorage.getItem("user"));
       //recuperar el token para la Auth
@@ -89,7 +100,6 @@ export default {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           this.galeria = data;
         });
     },
@@ -112,14 +122,14 @@ export default {
 };
 </script>
 <style >
+.format-null{
+  all: unset !important;
+}
 .tam {
   margin-top: 5px;
   width: 300px;
 }
-.letra {
-  font: oblique bold 120% cursive;
-  font-size: 56px;
-}
+
 .btnhome {
     font-family: Lato, sans-serif;
   text-decoration: none;

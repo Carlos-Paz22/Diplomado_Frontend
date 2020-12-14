@@ -2,12 +2,7 @@
   <div>
     <div class="container-fluid mt-4">
       <div class="row">
-        <div id="tamaño-regis" class="container-fluid">
-          <div class="text-center">
-            <a href="/">
-              <!--      <img class="resitro" src="./assets/login.png" /> -->
-            </a>
-          </div>
+        <div id="tamaño-regis" style="color:white" class="container-fluid text-dark text-center ">
           <h1 class="color_reg">Registro</h1>
 
           <form
@@ -23,8 +18,9 @@
 
             <div v-else>
               <div class="row justify-content-center">
-              <img class="imgrespon" :src="image" alt=""/>
-            </div></div>
+                <img class="imgrespon" :src="image" alt=""/>
+              </div>
+            </div>
            
             <label for="social">Nombre social de la empresa</label>
             <strong style="color: red"> * </strong>
@@ -35,27 +31,6 @@
             <label for="celular">Celular de la empresa</label> 
             <strong style="color: red"> * </strong>
             <input   class="col-xs-12 col-sm-12 col-md-12 col-lg-12" type="text" v-model="celular" /> <br />
-              
-            <!--    <div v-if="error">
-              <div class="mt-2">
-                <b-alert
-                  :show="dismissCountDown"
-                  dismissible
-                  variant="danger"
-                  @dismissed="dismissCountDown = 0"
-                  @dismiss-count-down="countDownChanged"
-                >
-                  <p><strong>Error</strong> Usuario / Correo Invalido</p>
-                  <b-progress
-                    variant="danger"
-                    :max="dismissSecs"
-                    :value="dismissCountDown"
-                    height="4px"
-                  ></b-progress>
-                </b-alert>
-              </div>
-            </div> -->
-
             <div v-if="loading">
               <div class="mt-2">
                 <b-alert
@@ -75,9 +50,11 @@
                 </b-alert>
               </div>
             </div>
-            <button type="submit" id="color" class=" mt-2 btn btn-dark btn-lg btn-block">
+            <div class="row justify-content-center">
+              <button type="submit" id="color" class=" mt-2 btn btn-dark btn-lg">
               Registrarse
             </button>
+            </div>
           </form>
           <div id="mensaje"></div>
         </div>
@@ -106,17 +83,9 @@ export default {
       loading: false,
     };
   },
-  /*   mounted() {
-    axios.get("http://localhost:1337/categorias/me",{
-
-         headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-    }).then((response) => {
-      
-      this.cat = response.data;
-    });
-  }, */
+    mounted() {
+    
+  },
   methods: {
     countDownChanged(dismissCountDown) {
       this.dismissCountDown = dismissCountDown;
@@ -130,12 +99,12 @@ export default {
       this.subirimage = e.target.files[0];
     },
     register() {
+      
       this.loading = false;
-
       this.alerta = false;
       const token = localStorage.getItem("token");
       var formData = new FormData();
-      let data = { tags: this.checkedNames };
+      var data = { tags: this.checkedNames};
       formData.append("files.logo", this.subirimage);
       //formData.append("data", JSON.stringify(data));
       formData.append(
@@ -146,8 +115,6 @@ export default {
           celular: this.celular,
         })
       );
-
-      console.log(this.subirimage);
 
       axios
         .post("http://localhost:1337/empresas", formData, {
@@ -160,16 +127,14 @@ export default {
         })
         .then((response) => {
           this.loading = true;
-          redireccionar();
+          window.location.href='/myperfil'
           //    this.$router.push("/home");
         })
         .catch((err) => {
           console.log("Fallo");
           this.err = true;
         }); 
-         function redireccionar() {
-        setTimeout("location.href='/myperfil'", 3000);
-      }
+         
     },
   },
 };

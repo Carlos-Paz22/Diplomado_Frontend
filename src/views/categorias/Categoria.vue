@@ -1,39 +1,31 @@
 <template>
-
 <div>
- 
-
   <section>
- 
-  <h1>Mis Categorias</h1>
-  <div class="tbl-header">
+ <div class="row justify-content-between">
+   <div class="col-6 col-sm-4 col-mg-4 col-lg-3"><h2>Mis Categorias</h2></div>
+   <div class="col-6 col-sm-4 col-mg-4 col-lg-3"><button class="btn btn-primary" type="button" @click="$router.push('/categoria/create')">Crear Categoria</button></div>
+  </div>
+  <div class="tbl">
     <table cellpadding="0" cellspacing="0" border="0">
       <thead>
         <tr>
-          
           <th>Nombre</th>
-          <th>Accion</th>
+          <th>Acción</th>
         </tr>
       </thead>
     </table>
   </div>
   <div class="tbl-content">
     <table cellpadding="0" cellspacing="0" border="0">
-      <tbody >
-        <tr  v-for="categoria in categorias" :key="categoria.id">
-          
-          <td>{{ categoria.nombre }}</td>
-        
+      <tbody>
+        <tr v-for="categoria in categorias" :key="categoria.id">
+          <td class="text-dark">{{ categoria.nombre }}</td>
           <td> 
+            <button class="btn btn-"></button>
           <a  class="mr-2" :href="`/categorias/${categoria.id}/edit`"> <b-button variant="warning">Editar</b-button></a>
           <a href="#" @click="eliminar(categoria.id)"> <b-button variant="danger">Eliminar</b-button></a>
           </td>
-          
         </tr>
-       
-       
-        
-        
       </tbody>
     </table>
   </div>
@@ -96,15 +88,6 @@ export default {
 </script>
 
 <style >
-  
-h1{
-  font-size: 30px;
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: 300;
-  text-align: center;
-  margin-bottom: 15px;
-}
 table{
   width:100%;
   table-layout: fixed;
@@ -113,37 +96,37 @@ table{
   background-color: rgba(255,255,255,0.3);
  }
 .tbl-content{
-  height:300px;
+  
   overflow-x:auto;
   margin-top: 0px;
-  border: 1px solid rgba(255,255,255,0.3);
+  
 }
 .tbl-content2{
-  height:250px;
+  
   overflow-x:auto;
   margin-top: 0px;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgb(148, 148, 148);
 }
-
-
 th{
   padding: 20px 15px;
   text-align: left;
   font-weight: 500;
   font-size: 15px;
   font-weight: bold;
+  background-color: white;
   color: rgb(0, 0, 0);
   text-transform: uppercase;
 }
 td{
+  background-color: white;
   padding: 15px;
   text-align: left;
   vertical-align:middle;
   font-weight: 300;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: bold;
-  color: #fff;
-  border-bottom: solid 1px rgba(255, 255, 255, 0.199);
+  color: rgb(0, 0, 0);
+  
 }
 
 
